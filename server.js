@@ -13,7 +13,7 @@ const server = https.createServer({
 }, app);
 
 // app.set('port', port);
-server.listen(443);
+server.listen(80);
 
 
 // // Exception Handler Function
