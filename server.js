@@ -11,47 +11,47 @@ const server = https.createServer({
     key: ConfigOptions.key,
     cert: ConfigOptions.cert
 }, app);
-const port = ConfigOptions.port || 3000;
 
-app.set('port', port);
-server.listen(port);
+// app.set('port', port);
+server.listen(443);
 
 
-// Exception Handler Function
-function onError(error) {
-    if (error.syscall !== 'listen') {
-      throw error;
-    }
+// // Exception Handler Function
+// function onError(error) {
+//     if (error.syscall !== 'listen') {
+//       throw error;
+//     }
   
-    const bind = typeof port === 'string'
-      ? `Pipe ${port}`
-      : `Port ${port}`;
-    switch (error.code) {
-      case 'EACCES':
-        logger.error(`${bind} requires elevated privileges`);
-        process.exit(1);
-        break;
-      case 'EADDRINUSE':
-        logger.error(`${bind} is already in use`);
-        process.exit(1);
-        break;
-      default:
-        throw error;
-    }
-}
+//     const bind = typeof port === 'string'
+//       ? `Pipe ${port}`
+//       : `Port ${port}`;
+//     switch (error.code) {
+//       case 'EACCES':
+//         logger.error(`${bind} requires elevated privileges`);
+//         process.exit(1);
+//         break;
+//       case 'EADDRINUSE':
+//         logger.error(`${bind} is already in use`);
+//         process.exit(1);
+//         break;
+//       default:
+//         throw error;
+//     }
+// }
 
-// Function: To confirm Service is listening on the configured Port
-function onListening() {
-    const addr = server.address();
-    const bind = typeof addr === 'string'
-        ? `pipe ${addr}`
-        : `port ${addr.port}`;
-    console.log(`Listening on ${bind}`);
-}
+// // Function: To confirm Service is listening on the configured Port
+// function onListening() {
+//     // const addr = server.address();
+//     const addr = '193.233.18.58';
+//     const bind = typeof addr === 'string'
+//         ? `pipe ${addr}`
+//         : `port ${addr.port}`;
+//     console.log(`Listening on ${bind}`);
+// }
 
-// logger.info(`Server started. Listening on Port ${port}`);
-server.on('error', onError);
-server.on('listening', onListening);
+// // logger.info(`Server started. Listening on Port ${port}`);
+// server.on('error', onError);
+// server.on('listening', onListening);
 
 
 
